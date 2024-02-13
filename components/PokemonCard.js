@@ -1,8 +1,34 @@
-import { View, Text, StyleSheet, Platform } from "react-native";
-function PokemonCard() {
+import { View, Text, StyleSheet, Platform, Image } from "react-native";
+function PokemonCard({ props }) {
   return (
     <View style={styles.card}>
-      <Text>Pokemon Card</Text>
+      <View>
+        <Text>{props.name}</Text>
+        <Text>{props.hp}</Text>
+      </View>
+      <Image
+        source={props.image}
+        accessibilityLabel={`${props.name} pokemon`}
+      />
+
+      <View>
+        <Text>{props.type}</Text>
+      </View>
+      <View>
+        <Text>
+          {props.moves.map((move, index) => (
+            <Text key={index}> {move}</Text>
+          ))}
+        </Text>
+      </View>
+
+      <View>
+        <Text>
+          {props.weaknesses.map((weaknes, index) => (
+            <Text key={index}> {weaknes}</Text>
+          ))}
+        </Text>
+      </View>
     </View>
   );
 }
@@ -12,8 +38,6 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
     borderWidth: 2,
     borderRadius: 16,
-    alignItems: "center",
-    justifyContent: "center",
     padding: 16,
     margin: 16,
     ...Platform.select({
