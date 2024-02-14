@@ -1,7 +1,8 @@
-import { View, Text, Image } from "react-native";
+import { View, Text, Image, Pressable } from "react-native";
 import { styles } from "../Styles";
 
 import { getTypeDetails } from "../data/data";
+import { useState } from "react";
 
 function PokemonCard({ props }) {
   const { borderColor, emoji } = getTypeDetails(props.type);
